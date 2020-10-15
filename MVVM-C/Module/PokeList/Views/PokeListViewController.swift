@@ -15,7 +15,6 @@ class PokeListViewController: UIViewController {
     
     private lazy var dataSource = RxCollectionViewSectionedReloadDataSource<PokeSectionModel>(configureCell: { (_, collectionView, indexPath, item) -> UICollectionViewCell in
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokeCollectionViewCell.className, for: indexPath) as? PokeCollectionViewCell else { return UICollectionViewCell() }
-        cell.backgroundColor = .red
         cell.configCell(with: PokeCollectionCellViewModel(), enviroment: MPokeCollectionCellEnviroment(), namedAPIResource: item)
         return cell
     })
@@ -25,6 +24,7 @@ class PokeListViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let loadViewRelay = PublishRelay<Void>()
     private let loadMorePage = PublishRelay<Void>()
+    private let confirmError = PublishRelay<Void>()
     private var isLoading: Bool = false
     
     var viewModel: PokeListViewModel!
@@ -61,7 +61,8 @@ class PokeListViewController: UIViewController {
     private func bindViewModel() {
         let input = PokeListViewModel.Input(loadView: loadViewRelay.asObservable(),
                                             loadMore: loadMorePage.asObservable(),
-                                            showDetail: collectionView.rx.itemSelected.compactMap({ _ in return nil }))
+                                            showDetail: collectionView.rx.itemSelected.compactMap({ _ in return nil }),
+                                            confirmError: confirmError.asObservable())
         let outPut = viewModel.transform(enviroment: enviroment)(input)
         
         
@@ -89,8 +90,7 @@ class PokeListViewController: UIViewController {
     private func handleErrorAlert(_ action: AlertAction) {
         switch action {
         case .confirm:
-            // TODO: Do something when user is confirm error
-            print("Is confirm alert")
+            confirmError.accept(())
         default: break
         }
     }
@@ -100,7 +100,7 @@ class PokeListViewController: UIViewController {
 extension PokeListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemWidth = (collectionView.bounds.width - 30) / 2
-        let itemHeight = itemWidth / 1.3
+        let itemHeight = itemWidth / 1.45
         return CGSize(width: itemWidth, height: itemHeight)
     }
 
@@ -119,9 +119,8 @@ extension PokeListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let cell = cell as? PokeCollectionViewCell else { return }
         cell.startFetchPokeDetail()
-        
-        
     }
+
 }
 
 extension PokeListViewController: UIScrollViewDelegate {

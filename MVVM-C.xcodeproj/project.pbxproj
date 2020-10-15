@@ -32,6 +32,27 @@
 		041C221E2536EE460030ED0F /* Reactive+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041C221D2536EE460030ED0F /* Reactive+Extentions.swift */; };
 		044F45E0252436C50039F99E /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044F45DF252436C50039F99E /* Store.swift */; };
 		048E2887250F66C500A77032 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E2886250F66C500A77032 /* ActivityIndicator.swift */; };
+		049A4EE925382F89001BBC7B /* Biotif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049A4ED925382F87001BBC7B /* Biotif-Regular.ttf */; };
+		049A4EEA25382F89001BBC7B /* Biotif-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049A4EDA25382F87001BBC7B /* Biotif-Light.ttf */; };
+		049A4EEB25382F89001BBC7B /* Biotif-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049A4EDB25382F87001BBC7B /* Biotif-BlackItalic.ttf */; };
+		049A4EEC25382F89001BBC7B /* Biotif-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049A4EDC25382F87001BBC7B /* Biotif-LightItalic.ttf */; };
+		049A4EED25382F89001BBC7B /* Biotif-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049A4EDD25382F88001BBC7B /* Biotif-Medium.ttf */; };
+		049A4EEE25382F89001BBC7B /* Biotif-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049A4EDE25382F88001BBC7B /* Biotif-Black.ttf */; };
+		049A4EEF25382F89001BBC7B /* Biotif-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049A4EDF25382F88001BBC7B /* Biotif-ExtraBold.ttf */; };
+		049A4EF025382F89001BBC7B /* Biotif-BookItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049A4EE025382F88001BBC7B /* Biotif-BookItalic.ttf */; };
+		049A4EF125382F89001BBC7B /* Biotif-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049A4EE125382F88001BBC7B /* Biotif-RegularItalic.ttf */; };
+		049A4EF225382F89001BBC7B /* Biotif-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049A4EE225382F88001BBC7B /* Biotif-Book.ttf */; };
+		049A4EF325382F89001BBC7B /* Biotif-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049A4EE325382F88001BBC7B /* Biotif-BoldItalic.ttf */; };
+		049A4EF425382F89001BBC7B /* Biotif-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049A4EE425382F89001BBC7B /* Biotif-MediumItalic.ttf */; };
+		049A4EF525382F89001BBC7B /* Biotif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049A4EE525382F89001BBC7B /* Biotif-Bold.ttf */; };
+		049A4EF625382F89001BBC7B /* Biotif-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049A4EE625382F89001BBC7B /* Biotif-SemiBold.ttf */; };
+		049A4EF725382F89001BBC7B /* Biotif-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049A4EE725382F89001BBC7B /* Biotif-SemiBoldItalic.ttf */; };
+		049A4EF825382F89001BBC7B /* Biotif-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049A4EE825382F89001BBC7B /* Biotif-ExtraBoldItalic.ttf */; };
+		049A4EFD25382FBB001BBC7B /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A4EFC25382FBB001BBC7B /* AppFont.swift */; };
+		049A4F012538308C001BBC7B /* RegularLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A4F002538308C001BBC7B /* RegularLabel.swift */; };
+		049A4F05253830A4001BBC7B /* BoldLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A4F04253830A4001BBC7B /* BoldLabel.swift */; };
+		049A4F0B253833E0001BBC7B /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A4F0A253833E0001BBC7B /* RoundedView.swift */; };
+		049A4F1125383409001BBC7B /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A4F1025383409001BBC7B /* UIView+Extensions.swift */; };
 		04B162B725360EA300FB15AD /* PokeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B162B625360EA300FB15AD /* PokeCollectionViewCell.swift */; };
 		04DD77E5250B1F9A000925AC /* PokeListEnviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD77E4250B1F9A000925AC /* PokeListEnviroment.swift */; };
 		04DD77E8250B21F0000925AC /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD77E7250B21F0000925AC /* Array+Extensions.swift */; };
@@ -92,6 +113,27 @@
 		041C221D2536EE460030ED0F /* Reactive+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Extentions.swift"; sourceTree = "<group>"; };
 		044F45DF252436C50039F99E /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		048E2886250F66C500A77032 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		049A4ED925382F87001BBC7B /* Biotif-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Biotif-Regular.ttf"; sourceTree = "<group>"; };
+		049A4EDA25382F87001BBC7B /* Biotif-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Biotif-Light.ttf"; sourceTree = "<group>"; };
+		049A4EDB25382F87001BBC7B /* Biotif-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Biotif-BlackItalic.ttf"; sourceTree = "<group>"; };
+		049A4EDC25382F87001BBC7B /* Biotif-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Biotif-LightItalic.ttf"; sourceTree = "<group>"; };
+		049A4EDD25382F88001BBC7B /* Biotif-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Biotif-Medium.ttf"; sourceTree = "<group>"; };
+		049A4EDE25382F88001BBC7B /* Biotif-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Biotif-Black.ttf"; sourceTree = "<group>"; };
+		049A4EDF25382F88001BBC7B /* Biotif-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Biotif-ExtraBold.ttf"; sourceTree = "<group>"; };
+		049A4EE025382F88001BBC7B /* Biotif-BookItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Biotif-BookItalic.ttf"; sourceTree = "<group>"; };
+		049A4EE125382F88001BBC7B /* Biotif-RegularItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Biotif-RegularItalic.ttf"; sourceTree = "<group>"; };
+		049A4EE225382F88001BBC7B /* Biotif-Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Biotif-Book.ttf"; sourceTree = "<group>"; };
+		049A4EE325382F88001BBC7B /* Biotif-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Biotif-BoldItalic.ttf"; sourceTree = "<group>"; };
+		049A4EE425382F89001BBC7B /* Biotif-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Biotif-MediumItalic.ttf"; sourceTree = "<group>"; };
+		049A4EE525382F89001BBC7B /* Biotif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Biotif-Bold.ttf"; sourceTree = "<group>"; };
+		049A4EE625382F89001BBC7B /* Biotif-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Biotif-SemiBold.ttf"; sourceTree = "<group>"; };
+		049A4EE725382F89001BBC7B /* Biotif-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Biotif-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		049A4EE825382F89001BBC7B /* Biotif-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Biotif-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		049A4EFC25382FBB001BBC7B /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
+		049A4F002538308C001BBC7B /* RegularLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularLabel.swift; sourceTree = "<group>"; };
+		049A4F04253830A4001BBC7B /* BoldLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldLabel.swift; sourceTree = "<group>"; };
+		049A4F0A253833E0001BBC7B /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		049A4F1025383409001BBC7B /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		04B162B625360EA300FB15AD /* PokeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeCollectionViewCell.swift; sourceTree = "<group>"; };
 		04DD77E4250B1F9A000925AC /* PokeListEnviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeListEnviroment.swift; sourceTree = "<group>"; };
 		04DD77E7250B21F0000925AC /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
@@ -159,8 +201,58 @@
 			children = (
 				048E2886250F66C500A77032 /* ActivityIndicator.swift */,
 				041C2159253699790030ED0F /* AppConstant.swift */,
+				049A4EFC25382FBB001BBC7B /* AppFont.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		049A4ED825382F77001BBC7B /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				049A4EDE25382F88001BBC7B /* Biotif-Black.ttf */,
+				049A4EDB25382F87001BBC7B /* Biotif-BlackItalic.ttf */,
+				049A4EE525382F89001BBC7B /* Biotif-Bold.ttf */,
+				049A4EE325382F88001BBC7B /* Biotif-BoldItalic.ttf */,
+				049A4EE225382F88001BBC7B /* Biotif-Book.ttf */,
+				049A4EE025382F88001BBC7B /* Biotif-BookItalic.ttf */,
+				049A4EDF25382F88001BBC7B /* Biotif-ExtraBold.ttf */,
+				049A4EE825382F89001BBC7B /* Biotif-ExtraBoldItalic.ttf */,
+				049A4EDA25382F87001BBC7B /* Biotif-Light.ttf */,
+				049A4EDC25382F87001BBC7B /* Biotif-LightItalic.ttf */,
+				049A4EDD25382F88001BBC7B /* Biotif-Medium.ttf */,
+				049A4EE425382F89001BBC7B /* Biotif-MediumItalic.ttf */,
+				049A4ED925382F87001BBC7B /* Biotif-Regular.ttf */,
+				049A4EE125382F88001BBC7B /* Biotif-RegularItalic.ttf */,
+				049A4EE625382F89001BBC7B /* Biotif-SemiBold.ttf */,
+				049A4EE725382F89001BBC7B /* Biotif-SemiBoldItalic.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		049A4EFB25382FA8001BBC7B /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				049A4F09253833CF001BBC7B /* View */,
+				049A4F08253833C8001BBC7B /* Label */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		049A4F08253833C8001BBC7B /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				049A4F002538308C001BBC7B /* RegularLabel.swift */,
+				049A4F04253830A4001BBC7B /* BoldLabel.swift */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
+		049A4F09253833CF001BBC7B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				049A4F0A253833E0001BBC7B /* RoundedView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		04DD77E6250B1FA1000925AC /* DomainModels */ = {
@@ -228,6 +320,7 @@
 		04ED46D324F3AE750035069D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				049A4EFB25382FA8001BBC7B /* CustomView */,
 				041C2152253698910030ED0F /* Network */,
 				048E2885250F66AE00A77032 /* Utilities */,
 				04ED46E524F3B7520035069D /* Base */,
@@ -247,6 +340,7 @@
 		04ED46D524F3AE8C0035069D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				049A4ED825382F77001BBC7B /* Font */,
 				04ED46B724F3AC2A0035069D /* Assets.xcassets */,
 				04ED46B924F3AC2A0035069D /* LaunchScreen.storyboard */,
 			);
@@ -283,6 +377,7 @@
 				04DDABDD251D8476000BAED7 /* UIViewController+Extensions.swift */,
 				041C214E253696A60030ED0F /* UIColor+Extensions.swift */,
 				041C221D2536EE460030ED0F /* Reactive+Extentions.swift */,
+				049A4F1025383409001BBC7B /* UIView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -449,10 +544,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049A4EF025382F89001BBC7B /* Biotif-BookItalic.ttf in Resources */,
+				049A4EEB25382F89001BBC7B /* Biotif-BlackItalic.ttf in Resources */,
+				049A4EF725382F89001BBC7B /* Biotif-SemiBoldItalic.ttf in Resources */,
+				049A4EF525382F89001BBC7B /* Biotif-Bold.ttf in Resources */,
 				04ED46DF24F3B5F60035069D /* PokeList.storyboard in Resources */,
+				049A4EEC25382F89001BBC7B /* Biotif-LightItalic.ttf in Resources */,
+				049A4EF425382F89001BBC7B /* Biotif-MediumItalic.ttf in Resources */,
+				049A4EF625382F89001BBC7B /* Biotif-SemiBold.ttf in Resources */,
+				049A4EF225382F89001BBC7B /* Biotif-Book.ttf in Resources */,
 				04ED46BB24F3AC2A0035069D /* LaunchScreen.storyboard in Resources */,
+				049A4EEA25382F89001BBC7B /* Biotif-Light.ttf in Resources */,
+				049A4EF325382F89001BBC7B /* Biotif-BoldItalic.ttf in Resources */,
 				04ED46F424F4B7FF0035069D /* PokeDetail.storyboard in Resources */,
+				049A4EE925382F89001BBC7B /* Biotif-Regular.ttf in Resources */,
+				049A4EF125382F89001BBC7B /* Biotif-RegularItalic.ttf in Resources */,
+				049A4EF825382F89001BBC7B /* Biotif-ExtraBoldItalic.ttf in Resources */,
+				049A4EEF25382F89001BBC7B /* Biotif-ExtraBold.ttf in Resources */,
+				049A4EEE25382F89001BBC7B /* Biotif-Black.ttf in Resources */,
 				04ED46B824F3AC2A0035069D /* Assets.xcassets in Resources */,
+				049A4EED25382F89001BBC7B /* Biotif-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,12 +657,16 @@
 				041C2114253694630030ED0F /* AbilitiesResult.swift in Sources */,
 				04DDABDE251D8476000BAED7 /* UIViewController+Extensions.swift in Sources */,
 				04ED46E724F3C2290035069D /* PokeListViewModel.swift in Sources */,
+				049A4F1125383409001BBC7B /* UIView+Extensions.swift in Sources */,
 				041C215E25369A0F0030ED0F /* PokeAPITargetType.swift in Sources */,
 				041C211D253694630030ED0F /* PokemonResult.swift in Sources */,
 				04ED46D124F3AE640035069D /* AppCoordinator.swift in Sources */,
 				04ED46E424F3B6660035069D /* NSObject+Extensions.swift in Sources */,
+				049A4F05253830A4001BBC7B /* BoldLabel.swift in Sources */,
 				041C211B253694630030ED0F /* Machine.swift in Sources */,
+				049A4F012538308C001BBC7B /* RegularLabel.swift in Sources */,
 				041C215A253699790030ED0F /* AppConstant.swift in Sources */,
+				049A4F0B253833E0001BBC7B /* RoundedView.swift in Sources */,
 				041C2117253694630030ED0F /* NamedAPIResource.swift in Sources */,
 				041C221E2536EE460030ED0F /* Reactive+Extentions.swift in Sources */,
 				041C2118253694630030ED0F /* Type.swift in Sources */,
@@ -563,6 +678,7 @@
 				041C2115253694630030ED0F /* Move.swift in Sources */,
 				04ED46AF24F3AC270035069D /* AppDelegate.swift in Sources */,
 				041C2112253694630030ED0F /* Evolution.swift in Sources */,
+				049A4EFD25382FBB001BBC7B /* AppFont.swift in Sources */,
 				041C2119253694630030ED0F /* Meta.swift in Sources */,
 				041C21AB2536D7DC0030ED0F /* PokeCollectionCellEnviroment.swift in Sources */,
 				04ED46DD24F3B5E90035069D /* PokeListViewController.swift in Sources */,

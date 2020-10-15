@@ -9,6 +9,11 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Biotif-Bold.ttf">
+            <string>Biotif-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Poke List View Controller-->
         <scene sceneID="KlV-xB-GBa">
@@ -35,9 +40,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="183" height="166"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48X-hs-4Cn">
-                                                    <rect key="frame" x="10" y="10" width="163" height="24"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48X-hs-4Cn" customClass="BoldLabel" customModule="MVVM_C" customModuleProvider="target">
+                                                    <rect key="frame" x="10" y="10" width="163" height="17"/>
+                                                    <fontDescription key="fontDescription" name="Biotif-Bold" family="Biotif" pointSize="17"/>
                                                     <color key="textColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -47,42 +52,31 @@
                                                         <constraint firstAttribute="width" secondItem="oO9-gw-M8Y" secondAttribute="height" multiplier="1:1" id="2yU-JN-NZZ"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nd3-K0-NrP">
-                                                    <rect key="frame" x="10" y="64.5" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0a-sj-e1K">
-                                                    <rect key="frame" x="10" y="90.5" width="41.5" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="66.5" placeholderIntrinsicHeight="91.5" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="QAs-kF-lwC">
+                                                    <rect key="frame" x="10" y="37" width="66.5" height="91.5"/>
+                                                </stackView>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemTealColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="oO9-gw-M8Y" secondAttribute="trailing" constant="10" id="1AW-NA-hgX"/>
-                                                <constraint firstItem="g0a-sj-e1K" firstAttribute="top" secondItem="Nd3-K0-NrP" secondAttribute="bottom" constant="5" id="7eY-LF-38P"/>
-                                                <constraint firstItem="Nd3-K0-NrP" firstAttribute="top" secondItem="oO9-gw-M8Y" secondAttribute="top" id="9wF-D6-SB8"/>
+                                                <constraint firstItem="oO9-gw-M8Y" firstAttribute="leading" secondItem="QAs-kF-lwC" secondAttribute="trailing" constant="5" id="E6i-0O-Edk"/>
+                                                <constraint firstItem="QAs-kF-lwC" firstAttribute="leading" secondItem="63C-LJ-Ucg" secondAttribute="leading" constant="10" id="N03-cy-Vpi"/>
                                                 <constraint firstAttribute="bottom" secondItem="oO9-gw-M8Y" secondAttribute="bottom" constant="10" id="Njj-sq-c0x"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="QAs-kF-lwC" secondAttribute="bottom" constant="10" id="VD1-fA-0Da"/>
                                                 <constraint firstAttribute="trailing" secondItem="48X-hs-4Cn" secondAttribute="trailing" constant="10" id="ZaL-2N-WDP"/>
                                                 <constraint firstItem="oO9-gw-M8Y" firstAttribute="width" secondItem="63C-LJ-Ucg" secondAttribute="width" multiplier="1/2" id="fkQ-d1-pCI"/>
                                                 <constraint firstItem="48X-hs-4Cn" firstAttribute="top" secondItem="63C-LJ-Ucg" secondAttribute="top" constant="10" id="qiR-ct-gnw"/>
                                                 <constraint firstItem="48X-hs-4Cn" firstAttribute="leading" secondItem="63C-LJ-Ucg" secondAttribute="leading" constant="10" id="r1Y-Zd-zfr"/>
-                                                <constraint firstItem="Nd3-K0-NrP" firstAttribute="leading" secondItem="63C-LJ-Ucg" secondAttribute="leading" constant="10" id="rj7-Gw-3dR"/>
-                                                <constraint firstItem="oO9-gw-M8Y" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="g0a-sj-e1K" secondAttribute="trailing" id="tNB-Xb-wHg"/>
-                                                <constraint firstItem="g0a-sj-e1K" firstAttribute="leading" secondItem="63C-LJ-Ucg" secondAttribute="leading" constant="10" id="yfi-Ew-tdf"/>
-                                                <constraint firstItem="oO9-gw-M8Y" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Nd3-K0-NrP" secondAttribute="trailing" id="zlz-9w-i2Y"/>
+                                                <constraint firstItem="QAs-kF-lwC" firstAttribute="top" secondItem="48X-hs-4Cn" secondAttribute="bottom" constant="10" id="y2s-2y-QaR"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <size key="customSize" width="183" height="166"/>
                                         <connections>
                                             <outlet property="containerView" destination="63C-LJ-Ucg" id="fbT-9Z-iqQ"/>
-                                            <outlet property="firstClassTitleLabel" destination="Nd3-K0-NrP" id="kMj-AM-k8q"/>
                                             <outlet property="pokemonImageView" destination="oO9-gw-M8Y" id="bZZ-uD-p1z"/>
                                             <outlet property="pokemonNameTitleLabel" destination="48X-hs-4Cn" id="2xl-1o-fhg"/>
-                                            <outlet property="secondClassTitleLabel" destination="g0a-sj-e1K" id="51f-44-ROh"/>
+                                            <outlet property="pokemonTypeStackview" destination="QAs-kF-lwC" id="sqs-jR-a36"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

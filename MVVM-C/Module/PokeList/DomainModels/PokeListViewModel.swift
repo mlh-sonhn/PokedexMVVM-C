@@ -19,16 +19,19 @@ class PokeListViewModel: ViewModelType {
         let loadView: Observable<Void>
         let loadMore: Observable<Void>
         let showDetail: Observable<Pokemon>
+        let confirmError: Observable<Void>
     }
     
     enum Action {
         case fetchData
         case loadMore
         case showDetail(Pokemon)
-        case dataResponse(Result<[NamedAPIResource], Error>)
+        case dataResponse(Result<(Bool, [NamedAPIResource]), Error>)
+        case clearError
     }
     
     struct State {
+        var hasMorePoke: Bool = true
         var offset: Int = 0
         var limit: Int = 20
         var pokes: [PokeSectionModel] = []
@@ -51,26 +54,31 @@ class PokeListViewModel: ViewModelType {
             let store = Store<Action, State, Enviroment>(initial: State(), environment: enviroment) { (state, action, enviroment) -> Observable<Action> in
                 switch action {
                 case .fetchData:
+                    state.hasMorePoke = true
                     return request(0, state.limit)
                 case .loadMore:
                     return request(state.offset, state.limit)
                 case .showDetail(let pokemon):
                     state.pokeToShow = pokemon
-                case .dataResponse(.success(let pokemons)):
+                case .dataResponse(.success((let hasMorePokemon, let pokemons))):
                     var currentPokemons: [NamedAPIResource] = state.pokes.first?.items ?? []
                     currentPokemons.append(contentsOf: pokemons)
                     let pokes = SectionModel(model: "", items: currentPokemons)
+                    state.hasMorePoke = hasMorePokemon
                     state.offset = currentPokemons.count
                     state.pokes = [pokes]
                 case .dataResponse(.failure(let error)):
                     state.error = error
+                case .clearError:
+                    state.error = nil
                 }
                 return .empty()
             }
             let action = Observable.merge(
                 input.loadView.map({ Action.fetchData }),
                 input.showDetail.map({ Action.showDetail($0) }),
-                input.loadMore.map({ Action.loadMore })
+                input.loadMore.map({ Action.loadMore }),
+                input.confirmError.map({ Action.clearError })
             )
             _ = action.bind(to: store)
             return Output(pokes: store.state.map { $0.pokes }.asDriver(onErrorJustReturn: []),
