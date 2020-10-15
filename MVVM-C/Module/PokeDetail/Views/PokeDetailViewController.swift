@@ -10,7 +10,7 @@ import UIKit
 
 class PokeDetailViewController: UIViewController {
     
-    var pokeEntity: PokeEntity!
+    var poke: Pokemon!
 
     override func viewDidLoad() {
         super.viewDidLoad()
