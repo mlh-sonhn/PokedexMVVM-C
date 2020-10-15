@@ -18,7 +18,13 @@ class AppCoordinator: Coordinator {
     }
     
     override func start() {
-        navigationController.navigationBar.isHidden = true
+        navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+        navigationController.navigationBar.tintColor = .red
+        navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController.navigationBar.isTranslucent = true
+        navigationController.navigationBar.shadowImage = UIImage()
+        navigationController.navigationBar.backgroundColor = UIColor.clear
+        
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         

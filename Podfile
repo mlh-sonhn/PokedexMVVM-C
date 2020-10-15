@@ -10,7 +10,8 @@ target 'MVVM-C' do
   pod 'RxCocoa'
   pod 'RxDataSources'
   pod 'Moya/RxSwift'
-  pod 'ObjectMapper'
+  pod 'RxNuke'
+  pod 'SVProgressHUD'
 
   target 'MVVM-CTests' do
     inherit! :search_paths

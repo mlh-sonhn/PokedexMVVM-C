@@ -8,21 +8,34 @@
 
 import Foundation
 import RxSwift
+import SVProgressHUD
 
 protocol PokeListEnviroment: Enviroment {
     var activityIndicator: ActivityIndicator { get }
-    func fetchPokes() -> Single<[PokeEntity]>
+    func fetchPokes(offset: Int, limit: Int) -> Single<[NamedAPIResource]>
 }
 
 class MPokeListEnviroment: PokeListEnviroment {
+    
+    private let disposeBag = DisposeBag()
 
     let activityIndicator = ActivityIndicator()
     
-    func fetchPokes() -> Single<[PokeEntity]> {
-        return Single.just([PokeEntity(name: "Pikachu", thumbImage: "url"),
-                            PokeEntity(name: "Rayquaza", thumbImage: "url"),
-                            PokeEntity(name: "Chemander", thumbImage: "url")])
-            .delay(.milliseconds(100), scheduler: MainScheduler.instance)
+    init() {
+        activityIndicator.asObservable()
+            .bind(to: SVProgressHUD.rx.isAnimating)
+            .disposed(by: disposeBag)
+    }
+    
+    func fetchPokes(offset: Int, limit: Int) -> Single<[NamedAPIResource]> {
+        return provider.rx.request(.pokemons(offset, limit)).map({ response -> [NamedAPIResource] in
+            do {
+                let pokemonResult = try JSONDecoder().decode(PokemonResult.self, from: response.data)
+                return pokemonResult.results
+            } catch let error {
+                throw error
+            }
+        })
     }
 
 }
