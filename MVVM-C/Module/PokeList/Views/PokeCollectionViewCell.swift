@@ -17,16 +17,16 @@ class PokeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var pokemonNameTitleLabel: UILabel!
     @IBOutlet weak var pokemonImageView: UIImageView!
-    @IBOutlet weak var firstClassTitleLabel: UILabel!
-    @IBOutlet weak var secondClassTitleLabel: UILabel!
+    @IBOutlet weak var pokemonTypeStackview: UIStackView!
     
     private let loadPokemonDetailRelay = PublishRelay<String>()
     private var disposeBag = DisposeBag()
     private var viewModel: PokeCollectionCellViewModel!
     private var namedAPIResource: NamedAPIResource?
     
-    override class func awakeFromNib() {
+    override func awakeFromNib() {
         super.awakeFromNib()
+        containerView.viewCornerRadius = 20
     }
     
     override func prepareForReuse() {
@@ -65,9 +65,13 @@ class PokeCollectionViewCell: UICollectionViewCell {
     }
     
     private func handlePokemonLoaded(pokemon: Pokemon) {
-        pokemonNameTitleLabel.text = pokemon.name
-        firstClassTitleLabel.text = pokemon.types.first?.type.name
-        containerView.backgroundColor = pokemon.mainType.color.background
+        pokemonNameTitleLabel.text = pokemon.name.capitalized
+        let backgroundColor = pokemon.mainType.color.background
+        
+        add(strings: pokemon.types.map({ $0.type.name }),
+            to: pokemonTypeStackview,
+            backgroundColor: backgroundColor)
+        containerView.backgroundColor = backgroundColor.withAlphaComponent(0.8)
         
         if let url = URL(string: pokemon.sprites.other.artwork.front ?? "") {
             ImagePipeline.shared.rx.loadImage(with: url).subscribe { [weak self] image in
@@ -81,7 +85,33 @@ class PokeCollectionViewCell: UICollectionViewCell {
     
     private func handleError(error: Error) {
         pokemonNameTitleLabel.text = "XXXXXXXX"
-        firstClassTitleLabel.text = "XXXXXXXX"
+    }
+    
+    private func add(strings: [String], to stackView: UIStackView, backgroundColor: UIColor) {
+        stackView.subviews.forEach({ $0.removeFromSuperview() })
+        
+        for string in strings {
+            let view = RoundedView()
+            view.translatesAutoresizingMaskIntoConstraints = false
+            
+            let label = RegularLabel()
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.font = AppFont.getFont(font: .biotifRegular, fontSize: 14)
+            label.textColor = .white
+            label.text = string.capitalized
+            
+            view.backgroundColor = backgroundColor
+            view.addSubview(label)
+            
+            NSLayoutConstraint.activate([
+                label.topAnchor.constraint(equalTo: view.topAnchor, constant: 2.5),
+                label.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -2.5),
+                label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5),
+                label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5)
+            ])
+            
+            stackView.addArrangedSubview(view)
+        }
     }
     
 }

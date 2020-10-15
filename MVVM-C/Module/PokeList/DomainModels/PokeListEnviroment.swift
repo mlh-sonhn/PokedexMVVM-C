@@ -12,7 +12,7 @@ import SVProgressHUD
 
 protocol PokeListEnviroment: Enviroment {
     var activityIndicator: ActivityIndicator { get }
-    func fetchPokes(offset: Int, limit: Int) -> Single<[NamedAPIResource]>
+    func fetchPokes(offset: Int, limit: Int) -> Single<(Bool, [NamedAPIResource])>
 }
 
 class MPokeListEnviroment: PokeListEnviroment {
@@ -27,11 +27,11 @@ class MPokeListEnviroment: PokeListEnviroment {
             .disposed(by: disposeBag)
     }
     
-    func fetchPokes(offset: Int, limit: Int) -> Single<[NamedAPIResource]> {
-        return provider.rx.request(.pokemons(offset, limit)).map({ response -> [NamedAPIResource] in
+    func fetchPokes(offset: Int, limit: Int) -> Single<(Bool, [NamedAPIResource])> {
+        return provider.rx.request(.pokemons(offset, limit)).map({ response -> (Bool, [NamedAPIResource]) in
             do {
                 let pokemonResult = try JSONDecoder().decode(PokemonResult.self, from: response.data)
-                return pokemonResult.results
+                return (pokemonResult.next != nil, pokemonResult.results)
             } catch let error {
                 throw error
             }
