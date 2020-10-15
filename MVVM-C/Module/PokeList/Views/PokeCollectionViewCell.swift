@@ -10,7 +10,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Nuke
-import RxNuke
 
 class PokeCollectionViewCell: UICollectionViewCell {
 
@@ -18,6 +17,7 @@ class PokeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var pokemonNameTitleLabel: UILabel!
     @IBOutlet weak var pokemonImageView: UIImageView!
     @IBOutlet weak var pokemonTypeStackview: UIStackView!
+    @IBOutlet weak var pokeballImageView: UIImageView!
     
     private let loadPokemonDetailRelay = PublishRelay<String>()
     private var disposeBag = DisposeBag()
@@ -26,14 +26,17 @@ class PokeCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        containerView.viewCornerRadius = 20
+        setupCell()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        pokemonImageView.image = nil
-        
         disposeBag = DisposeBag()
+    }
+    
+    private func setupCell() {
+        containerView.viewCornerRadius = 20
+        pokeballImageView.image = UIImage(named: "ic_pokeball")?.tintColor(with: .white)
     }
     
     func configCell(with injectViewModel: PokeCollectionCellViewModel, enviroment: Enviroment, namedAPIResource: NamedAPIResource) {
@@ -66,20 +69,15 @@ class PokeCollectionViewCell: UICollectionViewCell {
     
     private func handlePokemonLoaded(pokemon: Pokemon) {
         pokemonNameTitleLabel.text = pokemon.name.capitalized
-        let backgroundColor = pokemon.mainType.color.background
-        
-        add(strings: pokemon.types.map({ $0.type.name }),
-            to: pokemonTypeStackview,
-            backgroundColor: backgroundColor)
-        containerView.backgroundColor = backgroundColor.withAlphaComponent(0.8)
+        add(strings: pokemon.types.map({ $0.type.name }), to: pokemonTypeStackview)
+        containerView.backgroundColor = pokemon.mainType.color.background
         
         if let url = URL(string: pokemon.sprites.other.artwork.front ?? "") {
-            ImagePipeline.shared.rx.loadImage(with: url).subscribe { [weak self] image in
-                guard let self = self else { return }
-                self.pokemonImageView.image = image.image
-            } onError: { error in
-                print("Error \(error.localizedDescription)")
-            }.disposed(by: disposeBag)
+            let options = ImageLoadingOptions(
+                placeholder: UIImage(named: "pokeball"),
+                transition: .fadeIn(duration: 0.33)
+            )
+            Nuke.loadImage(with: url, options: options, into: pokemonImageView)
         }
     }
     
@@ -87,7 +85,7 @@ class PokeCollectionViewCell: UICollectionViewCell {
         pokemonNameTitleLabel.text = "XXXXXXXX"
     }
     
-    private func add(strings: [String], to stackView: UIStackView, backgroundColor: UIColor) {
+    private func add(strings: [String], to stackView: UIStackView) {
         stackView.subviews.forEach({ $0.removeFromSuperview() })
         
         for string in strings {
@@ -100,7 +98,7 @@ class PokeCollectionViewCell: UICollectionViewCell {
             label.textColor = .white
             label.text = string.capitalized
             
-            view.backgroundColor = backgroundColor
+            view.backgroundColor = UIColor.white.withAlphaComponent(0.2)
             view.addSubview(label)
             
             NSLayoutConstraint.activate([

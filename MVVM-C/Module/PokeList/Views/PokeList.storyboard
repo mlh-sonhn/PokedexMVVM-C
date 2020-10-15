@@ -40,9 +40,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="183" height="166"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_pokeball" translatesAutoresizingMaskIntoConstraints="NO" id="S94-UW-6rg">
+                                                    <rect key="frame" x="81" y="64" width="122" height="122"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="S94-UW-6rg" secondAttribute="height" multiplier="1:1" id="KNg-F8-Ye4"/>
+                                                    </constraints>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48X-hs-4Cn" customClass="BoldLabel" customModule="MVVM_C" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="10" width="163" height="17"/>
-                                                    <fontDescription key="fontDescription" name="Biotif-Bold" family="Biotif" pointSize="17"/>
+                                                    <rect key="frame" x="10" y="10" width="163" height="22"/>
+                                                    <fontDescription key="fontDescription" name="Biotif-Bold" family="Biotif" pointSize="22"/>
                                                     <color key="textColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -53,7 +59,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="66.5" placeholderIntrinsicHeight="91.5" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="QAs-kF-lwC">
-                                                    <rect key="frame" x="10" y="37" width="66.5" height="91.5"/>
+                                                    <rect key="frame" x="10" y="42" width="66.5" height="91.5"/>
                                                 </stackView>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemTealColor"/>
@@ -62,7 +68,10 @@
                                                 <constraint firstItem="oO9-gw-M8Y" firstAttribute="leading" secondItem="QAs-kF-lwC" secondAttribute="trailing" constant="5" id="E6i-0O-Edk"/>
                                                 <constraint firstItem="QAs-kF-lwC" firstAttribute="leading" secondItem="63C-LJ-Ucg" secondAttribute="leading" constant="10" id="N03-cy-Vpi"/>
                                                 <constraint firstAttribute="bottom" secondItem="oO9-gw-M8Y" secondAttribute="bottom" constant="10" id="Njj-sq-c0x"/>
+                                                <constraint firstItem="S94-UW-6rg" firstAttribute="width" secondItem="63C-LJ-Ucg" secondAttribute="width" multiplier="2/3" id="PCp-XQ-ZXY"/>
+                                                <constraint firstAttribute="trailing" secondItem="S94-UW-6rg" secondAttribute="trailing" constant="-20" id="TYR-mr-NAO"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="QAs-kF-lwC" secondAttribute="bottom" constant="10" id="VD1-fA-0Da"/>
+                                                <constraint firstAttribute="bottom" secondItem="S94-UW-6rg" secondAttribute="bottom" constant="-20" id="Vek-mu-kpb"/>
                                                 <constraint firstAttribute="trailing" secondItem="48X-hs-4Cn" secondAttribute="trailing" constant="10" id="ZaL-2N-WDP"/>
                                                 <constraint firstItem="oO9-gw-M8Y" firstAttribute="width" secondItem="63C-LJ-Ucg" secondAttribute="width" multiplier="1/2" id="fkQ-d1-pCI"/>
                                                 <constraint firstItem="48X-hs-4Cn" firstAttribute="top" secondItem="63C-LJ-Ucg" secondAttribute="top" constant="10" id="qiR-ct-gnw"/>
@@ -74,6 +83,7 @@
                                         <size key="customSize" width="183" height="166"/>
                                         <connections>
                                             <outlet property="containerView" destination="63C-LJ-Ucg" id="fbT-9Z-iqQ"/>
+                                            <outlet property="pokeballImageView" destination="S94-UW-6rg" id="XYD-0S-3lh"/>
                                             <outlet property="pokemonImageView" destination="oO9-gw-M8Y" id="bZZ-uD-p1z"/>
                                             <outlet property="pokemonNameTitleLabel" destination="48X-hs-4Cn" id="2xl-1o-fhg"/>
                                             <outlet property="pokemonTypeStackview" destination="QAs-kF-lwC" id="sqs-jR-a36"/>
@@ -101,6 +111,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic_pokeball" width="980" height="984"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

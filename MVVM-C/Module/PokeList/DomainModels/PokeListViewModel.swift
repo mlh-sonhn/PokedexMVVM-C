@@ -42,6 +42,7 @@ class PokeListViewModel: ViewModelType {
     struct Output {
         let pokes: Driver<[PokeSectionModel]>
         let onShowDetailPoke: Signal<Pokemon?>
+        let hasMorePoke: Signal<Bool>
         let error: Signal<Error?>
     }
     
@@ -83,6 +84,7 @@ class PokeListViewModel: ViewModelType {
             _ = action.bind(to: store)
             return Output(pokes: store.state.map { $0.pokes }.asDriver(onErrorJustReturn: []),
                           onShowDetailPoke: store.state.compactMap { $0.pokeToShow }.asSignal(onErrorJustReturn: nil),
+                          hasMorePoke: store.state.map({ $0.hasMorePoke }).distinctUntilChanged().asSignal(onErrorJustReturn: true),
                           error: store.state.map { $0.error }.asSignal(onErrorJustReturn: nil))
         }
     }
