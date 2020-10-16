@@ -12,8 +12,12 @@ import RxCocoa
 import RxDataSources
 
 class PokeListViewController: UIViewController {
-    
-    private lazy var dataSource = RxCollectionViewSectionedReloadDataSource<PokeSectionModel>(configureCell: { (_, collectionView, indexPath, item) -> UICollectionViewCell in
+
+    private lazy var dataSource = RxCollectionViewSectionedAnimatedDataSource<PokeSectionModel>(
+        animationConfiguration: AnimationConfiguration(insertAnimation: .bottom,
+                                                       reloadAnimation: .none,
+                                                       deleteAnimation: .none),
+        configureCell: { (_, collectionView, indexPath, item) -> UICollectionViewCell in
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokeCollectionViewCell.className, for: indexPath) as? PokeCollectionViewCell else { return UICollectionViewCell() }
         cell.configCell(with: PokeCollectionCellViewModel(), enviroment: MPokeCollectionCellEnviroment(), namedAPIResource: item)
         return cell
@@ -125,10 +129,12 @@ extension PokeListViewController: UICollectionViewDelegateFlowLayout {
 
 extension PokeListViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard scrollView.contentSize.height != 0 else { return }
+        
         let height = scrollView.frame.height
         let contentSizeHeight = scrollView.contentSize.height
         let offset = scrollView.contentOffset.y
-        let reachedBottom = (offset + height >= (contentSizeHeight - 100))
+        let reachedBottom = (offset + height >= contentSizeHeight - 40)
         
         if reachedBottom && !isLoading {
             isLoading = true

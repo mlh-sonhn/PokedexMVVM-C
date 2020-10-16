@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-typealias PokeSectionModel = SectionModel<String, NamedAPIResource>
+typealias PokeSectionModel = AnimatableSectionModel<String, NamedAPIResource>
 
 class PokeListViewModel: ViewModelType {
 
@@ -64,7 +64,7 @@ class PokeListViewModel: ViewModelType {
                 case .dataResponse(.success((let hasMorePokemon, let pokemons))):
                     var currentPokemons: [NamedAPIResource] = state.pokes.first?.items ?? []
                     currentPokemons.append(contentsOf: pokemons)
-                    let pokes = SectionModel(model: "", items: currentPokemons)
+                    let pokes = AnimatableSectionModel(model: "", items: currentPokemons)
                     state.hasMorePoke = hasMorePokemon
                     state.offset = currentPokemons.count
                     state.pokes = [pokes]
