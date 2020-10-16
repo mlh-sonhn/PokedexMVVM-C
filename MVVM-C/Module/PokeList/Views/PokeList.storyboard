@@ -40,7 +40,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="183" height="166"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_pokeball" translatesAutoresizingMaskIntoConstraints="NO" id="S94-UW-6rg">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_pokeball" translatesAutoresizingMaskIntoConstraints="NO" id="S94-UW-6rg">
                                                     <rect key="frame" x="81" y="64" width="122" height="122"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="S94-UW-6rg" secondAttribute="height" multiplier="1:1" id="KNg-F8-Ye4"/>

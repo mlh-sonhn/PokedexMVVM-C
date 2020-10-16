@@ -44,85 +44,85 @@ enum PokemonType: String, CaseIterable {
     var color: PokemonColor {
         switch self {
         case .normal:
-            return PokemonColor(background: UIColor().colorFromHex(hex: "A8A878"),
+            return PokemonColor(background: UIColor().colorFromHex(hex: "6D6D4E"),
                                 text: .white,
-                                type: UIColor().colorFromHex(hex: "A8A878"))
+                                type: UIColor().colorFromHex(hex: "6D6D4E"))
         case .fighting:
-            return PokemonColor(background: UIColor().colorFromHex(hex: "C03028"),
+            return PokemonColor(background: UIColor().colorFromHex(hex: "7D1F1A"),
                                 text: .white,
-                                type: UIColor().colorFromHex(hex: "C03028"))
+                                type: UIColor().colorFromHex(hex: "7D1F1A"))
         case .flying:
-            return PokemonColor(background: UIColor().colorFromHex(hex: "A8A878"),
+            return PokemonColor(background: UIColor().colorFromHex(hex: "6D5E9C"),
                                 text: .white,
-                                type: UIColor().colorFromHex(hex: "A8A878"))
+                                type: UIColor().colorFromHex(hex: "6D5E9C"))
         case .poison:
-            return PokemonColor(background: UIColor().colorFromHex(hex: "A040A0"),
+            return PokemonColor(background: UIColor().colorFromHex(hex: "682A68"),
                                 text: .white,
-                                type: UIColor().colorFromHex(hex: "A040A0"))
+                                type: UIColor().colorFromHex(hex: "682A68"))
         case .ground:
-            return PokemonColor(background: UIColor().colorFromHex(hex: "E0C068"),
+            return PokemonColor(background: UIColor().colorFromHex(hex: "927D44"),
                                 text: .white,
-                                type: UIColor().colorFromHex(hex: "E0C068"))
+                                type: UIColor().colorFromHex(hex: "927D44"))
         case .rock:
-            return PokemonColor(background: UIColor().colorFromHex(hex: "B8A038"),
+            return PokemonColor(background: UIColor().colorFromHex(hex: "786824"),
                                 text: .white,
-                                type: UIColor().colorFromHex(hex: "B8A038"))
+                                type: UIColor().colorFromHex(hex: "786824"))
         case .bug:
-            return PokemonColor(background: UIColor().colorFromHex(hex: "A8B820"),
+            return PokemonColor(background: UIColor().colorFromHex(hex: "6D7815"),
                                 text: .white,
-                                type: UIColor().colorFromHex(hex: "A8B820"))
+                                type: UIColor().colorFromHex(hex: "6D7815"))
         case .ghost:
-            return PokemonColor(background: UIColor().colorFromHex(hex: "705890"),
+            return PokemonColor(background: UIColor().colorFromHex(hex: "493963"),
                                 text: .white,
-                                type: UIColor().colorFromHex(hex: "705890"))
+                                type: UIColor().colorFromHex(hex: "493963"))
         case .steel:
             //CHUACO
-            return PokemonColor(background: UIColor().colorFromHex(hex: "A8A878"),
+            return PokemonColor(background: UIColor().colorFromHex(hex: "787887"),
                                 text: .white,
-                                type: UIColor().colorFromHex(hex: "A8A878"))
+                                type: UIColor().colorFromHex(hex: "787887"))
         case .fire:
-            return PokemonColor(background: UIColor().colorFromHex(hex: "F08030"),
+            return PokemonColor(background: UIColor().colorFromHex(hex: "9C531F"),
                                 text: .white,
-                                type: UIColor().colorFromHex(hex: "F08030"))
+                                type: UIColor().colorFromHex(hex: "9C531F"))
         case .water:
-            return PokemonColor(background: UIColor().colorFromHex(hex: "6890F0"),
+            return PokemonColor(background: UIColor().colorFromHex(hex: "445E9C"),
                                 text: .white,
-                                type: UIColor().colorFromHex(hex: "6890F0"))
+                                type: UIColor().colorFromHex(hex: "445E9C"))
         case .grass:
-            return PokemonColor(background: UIColor().colorFromHex(hex: "78C850"),
+            return PokemonColor(background: UIColor().colorFromHex(hex: "4E8234"),
                                 text: .white,
-                                type: UIColor().colorFromHex(hex: "78C850"))
+                                type: UIColor().colorFromHex(hex: "4E8234"))
         case .electric:
-            return PokemonColor(background: UIColor().colorFromHex(hex: "F8D030"),
+            return PokemonColor(background: UIColor().colorFromHex(hex: "A1871F"),
                                 text: .white,
-                                type: UIColor().colorFromHex(hex: "F8D030"))
+                                type: UIColor().colorFromHex(hex: "A1871F"))
 
         case .psychic:
-            return PokemonColor(background: UIColor().colorFromHex(hex: "F85888"),
+            return PokemonColor(background: UIColor().colorFromHex(hex: "A13959"),
                                 text: .white,
-                                type: UIColor().colorFromHex(hex: "F85888"))
+                                type: UIColor().colorFromHex(hex: "A13959"))
         case .ice:
-            return PokemonColor(background: UIColor().colorFromHex(hex: "98D8D8"),
+            return PokemonColor(background: UIColor().colorFromHex(hex: "638D8D"),
                                 text: .white,
-                                type: UIColor().colorFromHex(hex: "98D8D8"))
+                                type: UIColor().colorFromHex(hex: "638D8D"))
         case .dragon:
-            return PokemonColor(background: UIColor().colorFromHex(hex: "7038F8"),
+            return PokemonColor(background: UIColor().colorFromHex(hex: "4924A1"),
                                 text: .white,
-                                type: UIColor().colorFromHex(hex: "7038F8"))
+                                type: UIColor().colorFromHex(hex: "4924A1"))
         case .dark:
             //CHUACO
-            return PokemonColor(background: UIColor().colorFromHex(hex: "A8A878"),
+            return PokemonColor(background: UIColor().colorFromHex(hex: "49392F"),
                                 text: .white,
-                                type: UIColor().colorFromHex(hex: "A8A878"))
+                                type: UIColor().colorFromHex(hex: "49392F"))
         case .fairy:
-            return PokemonColor(background: UIColor().colorFromHex(hex: "EE99AC"),
+            return PokemonColor(background: UIColor().colorFromHex(hex: "9B6470"),
                                 text: .white,
-                                type: UIColor().colorFromHex(hex: "EE99AC"))
+                                type: UIColor().colorFromHex(hex: "9B6470"))
         case .unknown:
             //CHUACO
-            return PokemonColor(background: UIColor().colorFromHex(hex: "A8A878"),
+            return PokemonColor(background: UIColor().colorFromHex(hex: "44685E"),
                                 text: .white,
-                                type: UIColor().colorFromHex(hex: "A8A878"))
+                                type: UIColor().colorFromHex(hex: "44685E"))
         case .shadow:
             //CHUACO
             return PokemonColor(background: UIColor().colorFromHex(hex: "A8A878"),

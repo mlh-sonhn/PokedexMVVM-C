@@ -23,6 +23,7 @@ class PokeCollectionViewCell: UICollectionViewCell {
     private var disposeBag = DisposeBag()
     private var viewModel: PokeCollectionCellViewModel!
     private var namedAPIResource: NamedAPIResource?
+    private var pokemon: Pokemon?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -63,8 +64,12 @@ class PokeCollectionViewCell: UICollectionViewCell {
     }
     
     func startFetchPokeDetail() {
-        guard let namedAPIResource = namedAPIResource else { return }
-        loadPokemonDetailRelay.accept(namedAPIResource.url)
+        if let pokemon = pokemon {
+            handlePokemonLoaded(pokemon: pokemon)
+        } else {
+            guard let namedAPIResource = namedAPIResource else { return }
+            loadPokemonDetailRelay.accept(namedAPIResource.url)
+        }
     }
     
     private func handlePokemonLoaded(pokemon: Pokemon) {
