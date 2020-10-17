@@ -18,7 +18,8 @@ class AppCoordinator: Coordinator {
     }
     
     override func start() {
-        navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black, .font: AppFont.getFont(font: .biotifBold)]
+        navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black,
+                                                                  .font: AppFont.getFont(font: .biotifBold) ?? UIFont.systemFont(ofSize: 17)]
         navigationController.navigationBar.tintColor = .red
         navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController.navigationBar.isTranslucent = true
