@@ -30,7 +30,9 @@
 		041C21952536B6490030ED0F /* PokeCollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041C21942536B6490030ED0F /* PokeCollectionCellViewModel.swift */; };
 		041C21AB2536D7DC0030ED0F /* PokeCollectionCellEnviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041C21AA2536D7DC0030ED0F /* PokeCollectionCellEnviroment.swift */; };
 		041C221E2536EE460030ED0F /* Reactive+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041C221D2536EE460030ED0F /* Reactive+Extentions.swift */; };
+		042DE218253A138D00D45FE6 /* LinearRoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042DE217253A138D00D45FE6 /* LinearRoundedView.swift */; };
 		044F45E0252436C50039F99E /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044F45DF252436C50039F99E /* Store.swift */; };
+		047D7436253B458300D1D34E /* SlideFadeBoldLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D7435253B458300D1D34E /* SlideFadeBoldLabel.swift */; };
 		048E2887250F66C500A77032 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E2886250F66C500A77032 /* ActivityIndicator.swift */; };
 		049A4EE925382F89001BBC7B /* Biotif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049A4ED925382F87001BBC7B /* Biotif-Regular.ttf */; };
 		049A4EEA25382F89001BBC7B /* Biotif-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049A4EDA25382F87001BBC7B /* Biotif-Light.ttf */; };
@@ -112,7 +114,9 @@
 		041C21942536B6490030ED0F /* PokeCollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeCollectionCellViewModel.swift; sourceTree = "<group>"; };
 		041C21AA2536D7DC0030ED0F /* PokeCollectionCellEnviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeCollectionCellEnviroment.swift; sourceTree = "<group>"; };
 		041C221D2536EE460030ED0F /* Reactive+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Extentions.swift"; sourceTree = "<group>"; };
+		042DE217253A138D00D45FE6 /* LinearRoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearRoundedView.swift; sourceTree = "<group>"; };
 		044F45DF252436C50039F99E /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		047D7435253B458300D1D34E /* SlideFadeBoldLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideFadeBoldLabel.swift; sourceTree = "<group>"; };
 		048E2886250F66C500A77032 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		049A4ED925382F87001BBC7B /* Biotif-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Biotif-Regular.ttf"; sourceTree = "<group>"; };
 		049A4EDA25382F87001BBC7B /* Biotif-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Biotif-Light.ttf"; sourceTree = "<group>"; };
@@ -245,6 +249,7 @@
 			children = (
 				049A4F002538308C001BBC7B /* RegularLabel.swift */,
 				049A4F04253830A4001BBC7B /* BoldLabel.swift */,
+				047D7435253B458300D1D34E /* SlideFadeBoldLabel.swift */,
 			);
 			path = Label;
 			sourceTree = "<group>";
@@ -253,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				049A4F0A253833E0001BBC7B /* RoundedView.swift */,
+				042DE217253A138D00D45FE6 /* LinearRoundedView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -667,11 +673,13 @@
 				04ED46E424F3B6660035069D /* NSObject+Extensions.swift in Sources */,
 				049A4F05253830A4001BBC7B /* BoldLabel.swift in Sources */,
 				041C211B253694630030ED0F /* Machine.swift in Sources */,
+				042DE218253A138D00D45FE6 /* LinearRoundedView.swift in Sources */,
 				049A4F012538308C001BBC7B /* RegularLabel.swift in Sources */,
 				041C215A253699790030ED0F /* AppConstant.swift in Sources */,
 				049A4F0B253833E0001BBC7B /* RoundedView.swift in Sources */,
 				041C2117253694630030ED0F /* NamedAPIResource.swift in Sources */,
 				041C221E2536EE460030ED0F /* Reactive+Extentions.swift in Sources */,
+				047D7436253B458300D1D34E /* SlideFadeBoldLabel.swift in Sources */,
 				041C2118253694630030ED0F /* Type.swift in Sources */,
 				041C2110253694630030ED0F /* Species.swift in Sources */,
 				04DD77E5250B1F9A000925AC /* PokeListEnviroment.swift in Sources */,

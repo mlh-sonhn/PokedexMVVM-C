@@ -14,7 +14,7 @@ import Nuke
 class PokeCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var pokemonNameTitleLabel: UILabel!
+    @IBOutlet weak var pokemonNameTitleLabel: SlideFadeBoldLabel!
     @IBOutlet weak var pokemonImageView: UIImageView!
     @IBOutlet weak var pokemonTypeStackview: UIStackView!
     @IBOutlet weak var pokeballImageView: UIImageView!
@@ -23,7 +23,6 @@ class PokeCollectionViewCell: UICollectionViewCell {
     private var disposeBag = DisposeBag()
     private var viewModel: PokeCollectionCellViewModel!
     private var namedAPIResource: NamedAPIResource?
-    private var pokemon: Pokemon?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,6 +31,9 @@ class PokeCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        pokemonNameTitleLabel.text = ""
+        pokemonImageView.image = UIImage(named: "pokeball")
+        
         disposeBag = DisposeBag()
     }
     
@@ -64,16 +66,13 @@ class PokeCollectionViewCell: UICollectionViewCell {
     }
     
     func startFetchPokeDetail() {
-        if let pokemon = pokemon {
-            handlePokemonLoaded(pokemon: pokemon)
-        } else {
-            guard let namedAPIResource = namedAPIResource else { return }
-            loadPokemonDetailRelay.accept(namedAPIResource.url)
-        }
+        guard let namedAPIResource = namedAPIResource else { return }
+        loadPokemonDetailRelay.accept(namedAPIResource.url)
     }
     
     private func handlePokemonLoaded(pokemon: Pokemon) {
-        pokemonNameTitleLabel.text = pokemon.name.capitalized
+        pokemonNameTitleLabel.setText(pokemon.name.capitalized,
+                                      backgroundColor: pokemon.mainType.color.background)
         add(strings: pokemon.types.map({ $0.type.name }), to: pokemonTypeStackview)
         containerView.backgroundColor = pokemon.mainType.color.background
         
@@ -94,7 +93,7 @@ class PokeCollectionViewCell: UICollectionViewCell {
         stackView.subviews.forEach({ $0.removeFromSuperview() })
         
         for string in strings {
-            let view = RoundedView()
+            let view = LinearRoundedView()
             view.translatesAutoresizingMaskIntoConstraints = false
             
             let label = RegularLabel()

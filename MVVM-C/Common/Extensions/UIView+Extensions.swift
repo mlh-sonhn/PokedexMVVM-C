@@ -86,4 +86,41 @@ extension UIView {
         }
     }
     
+    func addFadeAnimation(duration: Double) {
+        let transition = CATransition()
+        transition.type = CATransitionType.fade
+        transition.duration = duration
+        layer.add(transition, forKey: nil)
+    }
+    
+    func addGardientLayerAndStartAnimation(duration: Double,
+                                           animationDelegate delegate: CAAnimationDelegate? = nil,
+                                           backgroundColor color: UIColor) {
+        let gardientLayer = createGardient(withDuration: duration,
+                                           animationDelegate: delegate,
+                                           backgroundColor: color)
+        layer.mask = gardientLayer
+    }
+    
+    private func createGardient(withDuration duration: Double = 3.0,
+                                animationDelegate delegate: CAAnimationDelegate? = nil,
+                                backgroundColor color: UIColor = .white) -> CAGradientLayer {
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = bounds
+        gradientLayer.colors = [color.cgColor, UIColor.clear.cgColor, UIColor.clear.cgColor]
+        gradientLayer.startPoint = CGPoint(x: -1.0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+        
+        let gradientAnimation = CABasicAnimation(keyPath: "startPoint")
+        gradientAnimation.fromValue = gradientLayer.startPoint
+        gradientAnimation.toValue = gradientLayer.endPoint
+        gradientAnimation.duration = duration
+        gradientAnimation.delegate = delegate
+        
+        gradientLayer.add(gradientAnimation, forKey: "startPoint")
+                
+        return gradientLayer
+    }
+    
 }
