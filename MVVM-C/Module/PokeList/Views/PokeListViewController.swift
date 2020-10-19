@@ -50,10 +50,14 @@ class PokeListViewController: UIViewController {
     
     private func setupNavigation() {
         title = "Pokemons"
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = true
-            navigationItem.largeTitleDisplayMode = .always
-        }
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black,
+                                                                  .font: AppFont.getFont(font: .biotifBold) ?? UIFont.systemFont(ofSize: 17)]
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        
+        let backBarButtonItem = UIBarButtonItem()
+        backBarButtonItem.title = ""
+        navigationItem.backBarButtonItem = backBarButtonItem
     }
     
     private func setupCollectionView() {
@@ -65,7 +69,8 @@ class PokeListViewController: UIViewController {
     private func bindViewModel() {
         let input = PokeListViewModel.Input(loadView: loadViewRelay.asObservable(),
                                             loadMore: loadMorePage.asObservable(),
-                                            showDetail: collectionView.rx.itemSelected.compactMap({ _ in return nil }),
+                                            showDetail: collectionView.rx
+                                                .modelSelected(NamedAPIResource.self).asObservable(),
                                             confirmError: confirmError.asObservable())
         let outPut = viewModel.transform(enviroment: enviroment)(input)
         
@@ -74,9 +79,9 @@ class PokeListViewController: UIViewController {
             .drive(collectionView.rx.items(dataSource: dataSource))
         
         let showDetailPokeDispo = outPut.onShowDetailPoke
-            .emit(onNext: { [weak self] pokemon in
-                guard let self = self, let pokemon = pokemon else { return }
-                self.coordinator.startPokeDetail(pokemon)
+            .emit(onNext: { [weak self] referencePokemon in
+                guard let self = self, let referencePokemon = referencePokemon else { return }
+                self.coordinator.startPokeDetail(referencePokemon)
             })
         
         let viewErrorDispo = outPut.error.asObservable()

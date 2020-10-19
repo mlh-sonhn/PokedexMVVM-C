@@ -18,14 +18,14 @@ class PokeListViewModel: ViewModelType {
     struct Input {
         let loadView: Observable<Void>
         let loadMore: Observable<Void>
-        let showDetail: Observable<Pokemon>
+        let showDetail: Observable<NamedAPIResource>
         let confirmError: Observable<Void>
     }
     
     enum Action {
         case fetchData
         case loadMore
-        case showDetail(Pokemon)
+        case showDetail(NamedAPIResource)
         case dataResponse(Result<(Bool, [NamedAPIResource]), Error>)
         case clearError
     }
@@ -35,13 +35,13 @@ class PokeListViewModel: ViewModelType {
         var offset: Int = 0
         var limit: Int = 20
         var pokes: [PokeSectionModel] = []
-        var pokeToShow: Pokemon?
+        var pokeToShow: NamedAPIResource?
         var error: Error?
     }
 
     struct Output {
         let pokes: Driver<[PokeSectionModel]>
-        let onShowDetailPoke: Signal<Pokemon?>
+        let onShowDetailPoke: Signal<NamedAPIResource?>
         let hasMorePoke: Signal<Bool>
         let error: Signal<Error?>
     }

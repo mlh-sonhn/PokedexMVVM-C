@@ -7,15 +7,52 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class PokeDetailViewController: UIViewController {
     
-    var poke: Pokemon!
-
+    var referencePokemon: NamedAPIResource!
+    
+    private lazy var pokemonNumberLabel: BoldLabel = {
+        let label = BoldLabel()
+        label.font = AppFont.getFont(font: .biotifBold, fontSize: 20)
+        label.text = ""
+        label.tag = 1
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupNavigation()
     }
+    
+    func setupNavigation() {
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white,
+                                                                  .font: AppFont.getFont(font: .biotifBold) ?? UIFont.systemFont(ofSize: 17)]
+        addPokeNumberToNavigation()
+    }
+    
+    private func addPokeNumberToNavigation() {
+        guard let targetView = navigationController?.navigationBar else { return }
+        
+        targetView.addSubview(pokemonNumberLabel)
+
+        NSLayoutConstraint.activate([
+            pokemonNumberLabel.trailingAnchor.constraint(equalTo: targetView.trailingAnchor, constant: -16),
+            pokemonNumberLabel.bottomAnchor.constraint(equalTo: targetView.bottomAnchor, constant: -6)
+        ])
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Remove pokemon number from navigation
+        pokemonNumberLabel.removeFromSuperview()
+    }
+    
+   
 
 }
