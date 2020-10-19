@@ -12,7 +12,7 @@ import RxCocoa
 
 class PokeDetailViewController: UIViewController {
     
-    var referencePokemon: NamedAPIResource!
+    var pokemon: Pokemon!
     
     private lazy var pokemonNumberLabel: BoldLabel = {
         let label = BoldLabel()
@@ -28,11 +28,24 @@ class PokeDetailViewController: UIViewController {
         setupNavigation()
     }
     
-    func setupNavigation() {
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Remove pokemon number from navigation
+        pokemonNumberLabel.removeFromSuperview()
+    }
+
+}
+
+// MARK: - Navigation initial
+extension PokeDetailViewController {
+    
+    private func setupNavigation() {
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white,
                                                                   .font: AppFont.getFont(font: .biotifBold) ?? UIFont.systemFont(ofSize: 17)]
         addPokeNumberToNavigation()
+        addFavoriteBarButton()
     }
     
     private func addPokeNumberToNavigation() {
@@ -46,13 +59,10 @@ class PokeDetailViewController: UIViewController {
         ])
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        // Remove pokemon number from navigation
-        pokemonNumberLabel.removeFromSuperview()
+    private func addFavoriteBarButton() {
+        let favoriteBarButtonItem = UIBarButtonItem()
+        favoriteBarButtonItem.title = "Love"
+        navigationItem.rightBarButtonItem = favoriteBarButtonItem
     }
     
-   
-
 }

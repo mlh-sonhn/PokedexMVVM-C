@@ -12,17 +12,17 @@ import RxCocoa
 import RxDataSources
 
 class PokeListViewController: UIViewController {
-
+    
     private lazy var dataSource = RxCollectionViewSectionedAnimatedDataSource<PokeSectionModel>(
         animationConfiguration: AnimationConfiguration(insertAnimation: .bottom,
                                                        reloadAnimation: .none,
                                                        deleteAnimation: .none),
         configureCell: { (_, collectionView, indexPath, item) -> UICollectionViewCell in
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokeCollectionViewCell.className, for: indexPath) as? PokeCollectionViewCell else { return UICollectionViewCell() }
-        cell.configCell(with: PokeCollectionCellViewModel(), enviroment: MPokeCollectionCellEnviroment(), namedAPIResource: item)
-        return cell
-    })
-
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokeCollectionViewCell.className, for: indexPath) as? PokeCollectionViewCell else { return UICollectionViewCell() }
+            cell.configCell(with: PokeCollectionCellViewModel(), enviroment: MPokeCollectionCellEnviroment(), namedAPIResource: item)
+            return cell
+        })
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     private let disposeBag = DisposeBag()
@@ -34,7 +34,7 @@ class PokeListViewController: UIViewController {
     var viewModel: PokeListViewModel!
     var enviroment: Enviroment!
     var coordinator: PokeListCoordinator!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,7 +51,7 @@ class PokeListViewController: UIViewController {
     private func setupNavigation() {
         title = "Pokemons"
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black,
-                                                                  .font: AppFont.getFont(font: .biotifBold) ?? UIFont.systemFont(ofSize: 17)]
+                                                                   .font: AppFont.getFont(font: .biotifBold) ?? UIFont.systemFont(ofSize: 17)]
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
         
@@ -69,8 +69,7 @@ class PokeListViewController: UIViewController {
     private func bindViewModel() {
         let input = PokeListViewModel.Input(loadView: loadViewRelay.asObservable(),
                                             loadMore: loadMorePage.asObservable(),
-                                            showDetail: collectionView.rx
-                                                .modelSelected(NamedAPIResource.self).asObservable(),
+                                            showDetail: showDetailObservable(),
                                             confirmError: confirmError.asObservable())
         let outPut = viewModel.transform(enviroment: enviroment)(input)
         
@@ -103,7 +102,20 @@ class PokeListViewController: UIViewController {
         default: break
         }
     }
-
+    
+    private func showDetailObservable() -> Observable<Pokemon> {
+        return collectionView.rx.itemSelected
+            .compactMap({ [weak self] indexPath -> Pokemon? in
+                guard let self = self else { return nil }
+                return self.getPokemon(at: indexPath)
+            })
+    }
+    
+    private func getPokemon(at indexPath: IndexPath) -> Pokemon? {
+        guard let pokeCollectionViewCell = collectionView.cellForItem(at: indexPath) as? PokeCollectionViewCell else { return nil }
+        return pokeCollectionViewCell.getPokemon()
+    }
+    
 }
 
 extension PokeListViewController: UICollectionViewDelegateFlowLayout {
@@ -112,11 +124,11 @@ extension PokeListViewController: UICollectionViewDelegateFlowLayout {
         let itemHeight = itemWidth / 1.45
         return CGSize(width: itemWidth, height: itemHeight)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 10
     }
@@ -129,7 +141,7 @@ extension PokeListViewController: UICollectionViewDelegateFlowLayout {
         guard let cell = cell as? PokeCollectionViewCell else { return }
         cell.startFetchPokeDetail()
     }
-
+    
 }
 
 extension PokeListViewController: UIScrollViewDelegate {
