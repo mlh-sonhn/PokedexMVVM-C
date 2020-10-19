@@ -17,12 +17,13 @@ class PokeListCoordinator: Coordinator {
         let enviroment = MPokeListEnviroment()
         pokeListViewController.viewModel = viewModel
         pokeListViewController.enviroment = enviroment
+        pokeListViewController.coordinator = self
         
         navigationController.viewControllers = [pokeListViewController]
     }
     
-    func startPokeDetail(_ poke: Pokemon) {
-        let pokeDetailCoordinator = PokeDetailCoordinator(poke: poke)
+    func startPokeDetail(_ referencePokemon: NamedAPIResource) {
+        let pokeDetailCoordinator = PokeDetailCoordinator(referencePokemon: referencePokemon)
         pokeDetailCoordinator.navigationController = navigationController
         start(pokeDetailCoordinator)
     }
