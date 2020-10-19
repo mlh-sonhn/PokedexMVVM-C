@@ -23,6 +23,7 @@ class PokeCollectionViewCell: UICollectionViewCell {
     private var disposeBag = DisposeBag()
     private var viewModel: PokeCollectionCellViewModel!
     private var namedAPIResource: NamedAPIResource?
+    private var pokemon: Pokemon?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,34 +41,6 @@ class PokeCollectionViewCell: UICollectionViewCell {
     private func setupCell() {
         containerView.viewCornerRadius = 20
         pokeballImageView.image = UIImage(named: "ic_pokeball")?.tintColor(with: .white)
-    }
-    
-    func configCell(with injectViewModel: PokeCollectionCellViewModel, enviroment: Enviroment, namedAPIResource: NamedAPIResource) {
-        viewModel = injectViewModel
-        self.namedAPIResource = namedAPIResource
-        
-        let input = PokeCollectionCellViewModel.Input(loadPokemon: loadPokemonDetailRelay.asObservable())
-        let outPut = viewModel.transform(enviroment: enviroment)(input)
-        
-        let pokemonDispo = outPut.pokemon
-            .emit(onNext: { [weak self] pokemon in
-                guard let self = self else { return }
-                self.handlePokemonLoaded(pokemon: pokemon)
-            })
-        
-        let errorDispo = outPut.error
-            .emit(onNext: { [weak self] error in
-                guard let self = self, let error = error else { return }
-                self.handleError(error: error)
-            })
-        
-        disposeBag.insert([pokemonDispo, errorDispo])
-        
-    }
-    
-    func startFetchPokeDetail() {
-        guard let namedAPIResource = namedAPIResource else { return }
-        loadPokemonDetailRelay.accept(namedAPIResource.url)
     }
     
     private func handlePokemonLoaded(pokemon: Pokemon) {
@@ -89,6 +62,45 @@ class PokeCollectionViewCell: UICollectionViewCell {
         pokemonNameTitleLabel.text = "XXXXXXXX"
     }
     
+}
+
+extension PokeCollectionViewCell {
+    func configCell(with injectViewModel: PokeCollectionCellViewModel, enviroment: Enviroment, namedAPIResource: NamedAPIResource) {
+        viewModel = injectViewModel
+        self.namedAPIResource = namedAPIResource
+        
+        let input = PokeCollectionCellViewModel.Input(loadPokemon: loadPokemonDetailRelay.asObservable())
+        let outPut = viewModel.transform(enviroment: enviroment)(input)
+        
+        let pokemonDispo = outPut.pokemon
+            .emit(onNext: { [weak self] pokemon in
+                guard let self = self else { return }
+                self.pokemon = pokemon
+                self.handlePokemonLoaded(pokemon: pokemon)
+            })
+        
+        let errorDispo = outPut.error
+            .emit(onNext: { [weak self] error in
+                guard let self = self, let error = error else { return }
+                self.handleError(error: error)
+            })
+        
+        disposeBag.insert([pokemonDispo, errorDispo])
+        
+    }
+    
+    func startFetchPokeDetail() {
+        guard let namedAPIResource = namedAPIResource else { return }
+        loadPokemonDetailRelay.accept(namedAPIResource.url)
+    }
+    
+    func getPokemon() -> Pokemon? {
+        return pokemon
+    }
+
+}
+
+extension PokeCollectionViewCell {
     private func add(strings: [String], to stackView: UIStackView) {
         stackView.subviews.forEach({ $0.removeFromSuperview() })
         
@@ -115,5 +127,4 @@ class PokeCollectionViewCell: UICollectionViewCell {
             stackView.addArrangedSubview(view)
         }
     }
-    
 }
