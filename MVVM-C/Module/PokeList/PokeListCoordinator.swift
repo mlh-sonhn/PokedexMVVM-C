@@ -22,8 +22,8 @@ class PokeListCoordinator: Coordinator {
         navigationController.viewControllers = [pokeListViewController]
     }
     
-    func startPokeDetail(_ pokemon: Pokemon) {
-        let pokeDetailCoordinator = PokeDetailCoordinator(pokemon: pokemon)
+    func startPokeDetail(_ pokemonOffset: Int) {
+        let pokeDetailCoordinator = PokeDetailCoordinator(pokemonOffset: pokemonOffset)
         pokeDetailCoordinator.navigationController = navigationController
         start(pokeDetailCoordinator)
     }

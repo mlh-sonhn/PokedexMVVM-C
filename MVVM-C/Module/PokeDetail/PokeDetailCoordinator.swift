@@ -11,15 +11,15 @@ import UIKit
 
 class PokeDetailCoordinator: Coordinator {
     
-    let pokemon: Pokemon
+    let pokemonOffset: Int
     
-    init(pokemon: Pokemon) {
-        self.pokemon = pokemon
+    init(pokemonOffset: Int) {
+        self.pokemonOffset = pokemonOffset
     }
     
     override func start() {
         let pokeDetailCoordinator = UIStoryboard.pokeDetail.controller(of: PokeDetailViewController.self)
-        pokeDetailCoordinator.pokemon = pokemon
+        pokeDetailCoordinator.pokemonOffset = pokemonOffset
         navigationController.pushViewController(pokeDetailCoordinator, animated: true)
     }
     
