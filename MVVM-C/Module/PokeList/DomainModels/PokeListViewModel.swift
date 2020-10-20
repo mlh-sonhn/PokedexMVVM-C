@@ -18,14 +18,14 @@ class PokeListViewModel: ViewModelType {
     struct Input {
         let loadView: Observable<Void>
         let loadMore: Observable<Void>
-        let showDetail: Observable<Pokemon>
+        let showDetail: Observable<Int>
         let confirmError: Observable<Void>
     }
     
     enum Action {
         case fetchData
         case loadMore
-        case showDetail(Pokemon)
+        case showDetail(Int)
         case dataResponse(Result<(Bool, [NamedAPIResource]), Error>)
         case clearError
     }
@@ -35,13 +35,13 @@ class PokeListViewModel: ViewModelType {
         var offset: Int = 0
         var limit: Int = 20
         var pokes: [PokeSectionModel] = []
-        var pokeToShow: Pokemon?
+        var pokeToShow: Int?
         var error: Error?
     }
 
     struct Output {
         let pokes: Driver<[PokeSectionModel]>
-        let onShowDetailPoke: Signal<Pokemon?>
+        let onShowDetailPoke: Signal<Int?>
         let hasMorePoke: Signal<Bool>
         let error: Signal<Error?>
     }
@@ -59,8 +59,8 @@ class PokeListViewModel: ViewModelType {
                     return request(0, state.limit)
                 case .loadMore:
                     return request(state.offset, state.limit)
-                case .showDetail(let pokemon):
-                    state.pokeToShow = pokemon
+                case .showDetail(let offset):
+                    state.pokeToShow = offset
                 case .dataResponse(.success((let hasMorePokemon, let pokemons))):
                     var currentPokemons: [NamedAPIResource] = state.pokes.first?.items ?? []
                     currentPokemons.append(contentsOf: pokemons)

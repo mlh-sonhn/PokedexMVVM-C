@@ -69,7 +69,7 @@ class PokeListViewController: UIViewController {
     private func bindViewModel() {
         let input = PokeListViewModel.Input(loadView: loadViewRelay.asObservable(),
                                             loadMore: loadMorePage.asObservable(),
-                                            showDetail: showDetailObservable(),
+                                            showDetail: collectionView.rx.itemSelected.map { $0.row },
                                             confirmError: confirmError.asObservable())
         let outPut = viewModel.transform(enviroment: enviroment)(input)
         
@@ -78,9 +78,9 @@ class PokeListViewController: UIViewController {
             .drive(collectionView.rx.items(dataSource: dataSource))
         
         let showDetailPokeDispo = outPut.onShowDetailPoke
-            .emit(onNext: { [weak self] referencePokemon in
-                guard let self = self, let referencePokemon = referencePokemon else { return }
-                self.coordinator.startPokeDetail(referencePokemon)
+            .emit(onNext: { [weak self] pokemonOffset in
+                guard let self = self, let pokemonOffset = pokemonOffset else { return }
+                self.coordinator.startPokeDetail(pokemonOffset)
             })
         
         let viewErrorDispo = outPut.error.asObservable()
@@ -101,19 +101,6 @@ class PokeListViewController: UIViewController {
             confirmError.accept(())
         default: break
         }
-    }
-    
-    private func showDetailObservable() -> Observable<Pokemon> {
-        return collectionView.rx.itemSelected
-            .compactMap({ [weak self] indexPath -> Pokemon? in
-                guard let self = self else { return nil }
-                return self.getPokemon(at: indexPath)
-            })
-    }
-    
-    private func getPokemon(at indexPath: IndexPath) -> Pokemon? {
-        guard let pokeCollectionViewCell = collectionView.cellForItem(at: indexPath) as? PokeCollectionViewCell else { return nil }
-        return pokeCollectionViewCell.getPokemon()
     }
     
 }

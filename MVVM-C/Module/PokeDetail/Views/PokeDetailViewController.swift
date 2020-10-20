@@ -12,7 +12,7 @@ import RxCocoa
 
 class PokeDetailViewController: UIViewController {
     
-    var pokemon: Pokemon!
+    var pokemonOffset: Int = 0
     
     private lazy var pokemonNumberLabel: BoldLabel = {
         let label = BoldLabel()
