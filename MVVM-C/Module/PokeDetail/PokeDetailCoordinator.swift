@@ -18,9 +18,12 @@ class PokeDetailCoordinator: Coordinator {
     }
     
     override func start() {
-        let pokeDetailCoordinator = UIStoryboard.pokeDetail.controller(of: PokeDetailViewController.self)
-        pokeDetailCoordinator.pokemonOffset = pokemonOffset
-        navigationController.pushViewController(pokeDetailCoordinator, animated: true)
+        let pokeDetailViewController = UIStoryboard.pokeDetail.controller(of: PokeDetailViewController.self)
+        pokeDetailViewController.pokemonOffset = pokemonOffset
+        pokeDetailViewController.viewModel = PokeDetailViewModel()
+        pokeDetailViewController.enviroment = MPokeDetailEnviroment()
+        pokeDetailViewController.coordinator = self
+        navigationController.pushViewController(pokeDetailViewController, animated: true)
     }
     
     override func finish(_ coordinator: CoordinatorType) {

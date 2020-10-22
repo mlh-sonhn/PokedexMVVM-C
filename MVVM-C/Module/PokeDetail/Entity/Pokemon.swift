@@ -6,9 +6,9 @@
 //
 
 import Foundation
-import SwiftUI
+import RxDataSources
 
-struct Pokemon: Codable, Identifiable {
+struct Pokemon: Codable, Identifiable, IdentifiableType {
     var id = UUID().uuidString
     
     var name: String = ""
@@ -22,6 +22,12 @@ struct Pokemon: Codable, Identifiable {
     var abilities: [AbilitiesResult] = []
     var stats: [PokeStatUrl] = []
     var pokeId: Int = 0
+    
+    typealias Identity = String
+    
+    var identity: Identity {
+      return id
+    }
     
     var mainType: PokemonType {
         return PokemonType.type(from: types.first?.type.name)
@@ -39,6 +45,11 @@ struct Pokemon: Codable, Identifiable {
         case abilities = "abilities"
         case stats
         case pokeId = "id"
+    }
+}
+extension Pokemon: Equatable {
+    static func ==(lhs: Pokemon, rhs: Pokemon) -> Bool {
+      return lhs.id == rhs.id
     }
 }
 

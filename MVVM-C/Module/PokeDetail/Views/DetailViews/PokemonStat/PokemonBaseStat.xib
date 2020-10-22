@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PokemonBaseStat" customModule="MVVM_C" customModuleProvider="target">
+            <connections>
+                <outlet property="containerView" destination="iN0-l3-epB" id="c19-XG-cjp"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="382" placeholderIntrinsicHeight="200" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HJT-mP-gVY">
+                    <rect key="frame" x="16" y="60" width="382" height="200"/>
+                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Characteristics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avn-3f-q3x" customClass="BoldLabel" customModule="MVVM_C" customModuleProvider="target">
+                    <rect key="frame" x="16" y="276" width="382" height="24"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Rk3-4y-iZt">
+                    <rect key="frame" x="16" y="316" width="382" height="530"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8Zy-TG-rMW">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Rk3-4y-iZt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="0m2-kj-QBT"/>
+                <constraint firstItem="HJT-mP-gVY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="4vP-DL-EgJ"/>
+                <constraint firstItem="avn-3f-q3x" firstAttribute="top" secondItem="HJT-mP-gVY" secondAttribute="bottom" constant="16" id="ARY-cJ-OOZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Rk3-4y-iZt" secondAttribute="trailing" constant="16" id="EQJ-zU-26N"/>
+                <constraint firstItem="HJT-mP-gVY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="GzT-gs-C1Y"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="HJT-mP-gVY" secondAttribute="trailing" constant="16" id="ZHs-dn-x4V"/>
+                <constraint firstItem="Rk3-4y-iZt" firstAttribute="top" secondItem="avn-3f-q3x" secondAttribute="bottom" constant="16" id="Zca-Og-tee"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="avn-3f-q3x" secondAttribute="trailing" constant="16" id="ePC-ch-3Jw"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Rk3-4y-iZt" secondAttribute="bottom" constant="16" id="s1K-DL-tji"/>
+                <constraint firstItem="avn-3f-q3x" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="sdb-cT-DpK"/>
+            </constraints>
+            <point key="canvasLocation" x="-13" y="139"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
